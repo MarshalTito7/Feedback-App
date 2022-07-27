@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react'
+import Header from "./components/Header"
+import FeedbackList from "./components/FeedbackList"
+import FeedbackData from './data/FeedbackData'
+// import FeedbackItem from './components/FeedbackItem'
+// Components can be either classes or functions
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// With more modern react we find functoinal components, classes are old school
+function App(){
+    const [feedback, setFeedback] = useState(FeedbackData)
+    return(
+        <>
+            <Header/>
+            <div className="container">
+                <FeedbackList feedback = {feedback}/>
+                {/* We need to access the app level state from the feedback list */}
+            </div>  
+        </>
+    )
+    // JSX helps us to embed HTML directly into javascript
 }
 
-export default App;
+export default App
